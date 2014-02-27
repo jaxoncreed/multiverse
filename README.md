@@ -5,7 +5,7 @@ A game about time travel and shenanigans.
 
 Developers:
 
-Max Bires
-Brennen Bukovics
-Jackson Morgan
-Aawantika Something
+- Max Bires
+- Brennen Bukovics
+- Jackson Morgan
+- Aawantika Something
