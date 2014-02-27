@@ -8,4 +8,4 @@ Developers:
 - Max Bires
 - Brennen Bukovics
 - Jackson Morgan
-- Aawantika Something
+- Aawantika Sahu
