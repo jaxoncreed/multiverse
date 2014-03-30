@@ -1,0 +1,608 @@
+<ObjectLayer>
+ <Layer Name="Main" GUID="{09495245-01B2-446E-9CD5-2E1F7275E941}" FullName="Main" Hidden="0" Frozen="0" Exportable="1" ExportLayerPak="1" DefaultLoaded="0" HavePhysics="1" Expanded="1" IsDefaultColor="1" ID="0">
+  <LayerObjects>
+   <Object Type="Entity" Layer="Main" Id="{10D81D07-BA80-4737-AF7A-0A78F2DF7242}" Name="Level_intro" Pos="863.41547,325.90799,175.91939" FloorNumber="-1" Rotate="1,0,0,0" ColorRGB="65535" MatLayersMask="0" OutdoorOnly="0" CastShadow="1" CastShadowMinspec="1" LodRatio="100" ViewDistRatio="100" HiddenInGame="0" GlobalInSegmentedWorld="0" RecvWind="0" RenderNearest="0" NoStaticDecals="0" CreatedThroughPool="0" EntityClass="FlowgraphEntity">
+    <FlowGraph Description="" Group="Cinematic" enabled="1" MultiPlayer="ClientServer">
+     <Nodes>
+      <Node Id="2" Class="Animations:PlaySequence" pos="-110,60,0" flags="0">
+       <Inputs seqid_SequenceId="0" BreakOnStop="1" BlendPosSpeed="1" BlendRotSpeed="0" PerformBlendOut="1" StartTime="0" PlaySpeed="1" JumpToTime="0" seq_Sequence_File="Forest_intro"/>
+      </Node>
+      <Node Id="5" Class="Entity:BeamEntity" pos="-450,60,0" flags="0">
+       <Inputs entityId="0" Position="0,0,0" Rotation="0,0,0" UseZeroRot="0" Scale="0,0,0" Memo=""/>
+      </Node>
+      <Node Id="7" Class="Entity:EntityPos" pos="-450,180,0" flags="0" InHideMask="31" OutHideMask="63" EntityGUID="{45D9EF6C-3A8B-4485-889C-4FBD476378BC}" EntityGUID_64="44853A8B45D9EF6C">
+       <Inputs entityId="0" pos="0,0,0" rotate="0,0,0" scale="0,0,0" CoordSys="1"/>
+      </Node>
+      <Node Id="9" Class="Actor:LocalPlayer" pos="-700,60,0" flags="0">
+       <Inputs />
+      </Node>
+      <Node Id="11" Class="Game:Start" pos="-960,-70,0" flags="0">
+       <Inputs InGame="1" InEditor="0"/>
+      </Node>
+      <Node Id="18" Class="Inventory:HolsterItem" pos="430,-190,0" flags="0">
+       <Inputs />
+      </Node>
+      <Node Id="21" Class="Time:Delay" pos="-450,-190,0" flags="0">
+       <Inputs delay="1" resetOnInput="0"/>
+      </Node>
+      <Node Id="22" Class="Time:Delay" pos="230,-70,0" flags="0">
+       <Inputs delay="0.1" resetOnInput="0"/>
+      </Node>
+      <Node Id="27" Class="Actor:ActionFilter" pos="-450,-100,0" flags="0">
+       <Inputs entityId="0" Filter="cutscene"/>
+      </Node>
+      <Node Id="32" Class="Debug:ExecuteString" pos="-450,-310,0" flags="0">
+       <Inputs String="hud_hide 1" NextFrame="0"/>
+      </Node>
+      <Node Id="33" Class="Debug:ExecuteString" pos="410,60,0" flags="0">
+       <Inputs String="hud_hide 0" NextFrame="0"/>
+      </Node>
+      <Node Id="38" Class="Actor:ActionFilter" pos="-450,-20,0" flags="0">
+       <Inputs entityId="0" Filter="ingame_menu"/>
+      </Node>
+      <Node Id="40" Class="Debug:ExecuteString" pos="230,130,0" flags="0">
+       <Inputs String="ca_drawattachments 1" NextFrame="0"/>
+      </Node>
+      <Node Id="42" Class="Debug:ExecuteString" pos="-450,-250,0" flags="0">
+       <Inputs String="ca_drawattachments 0" NextFrame="0"/>
+      </Node>
+      <Node Id="43" Class="Time:Delay" pos="230,60,0" flags="0">
+       <Inputs delay="1" resetOnInput="0"/>
+      </Node>
+     </Nodes>
+     <Edges>
+      <Edge nodeIn="22" nodeOut="2" portIn="in" portOut="Done" enabled="1"/>
+      <Edge nodeIn="40" nodeOut="2" portIn="Set" portOut="Done" enabled="1"/>
+      <Edge nodeIn="43" nodeOut="2" portIn="in" portOut="Done" enabled="1"/>
+      <Edge nodeIn="2" nodeOut="5" portIn="Trigger" portOut="Done" enabled="1"/>
+      <Edge nodeIn="5" nodeOut="7" portIn="Position" portOut="pos" enabled="1"/>
+      <Edge nodeIn="5" nodeOut="7" portIn="Rotation" portOut="rotate" enabled="1"/>
+      <Edge nodeIn="5" nodeOut="9" portIn="entityId" portOut="entityId" enabled="1"/>
+      <Edge nodeIn="27" nodeOut="9" portIn="entityId" portOut="entityId" enabled="1"/>
+      <Edge nodeIn="38" nodeOut="9" portIn="entityId" portOut="entityId" enabled="1"/>
+      <Edge nodeIn="5" nodeOut="11" portIn="Beam" portOut="output" enabled="1"/>
+      <Edge nodeIn="9" nodeOut="11" portIn="update" portOut="output" enabled="1"/>
+      <Edge nodeIn="21" nodeOut="11" portIn="in" portOut="output" enabled="1"/>
+      <Edge nodeIn="27" nodeOut="11" portIn="Enable" portOut="output" enabled="1"/>
+      <Edge nodeIn="32" nodeOut="11" portIn="Set" portOut="output" enabled="1"/>
+      <Edge nodeIn="38" nodeOut="11" portIn="Enable" portOut="output" enabled="1"/>
+      <Edge nodeIn="42" nodeOut="11" portIn="Set" portOut="output" enabled="1"/>
+      <Edge nodeIn="18" nodeOut="21" portIn="Holster" portOut="out" enabled="1"/>
+      <Edge nodeIn="18" nodeOut="22" portIn="UnHolster" portOut="out" enabled="1"/>
+      <Edge nodeIn="27" nodeOut="22" portIn="Disable" portOut="out" enabled="1"/>
+      <Edge nodeIn="38" nodeOut="22" portIn="Disable" portOut="out" enabled="1"/>
+      <Edge nodeIn="33" nodeOut="43" portIn="Set" portOut="out" enabled="1"/>
+     </Edges>
+     <GraphTokens />
+    </FlowGraph>
+   </Object>
+   <Object Type="Entity" Layer="Main" Id="{523A241A-2BBA-4408-B553-A8C18DB4CA65}" Name="Lighting_Debug_White_Black_Logic" Pos="725.37146,422.77277,291.04132" FloorNumber="-1" Rotate="1,0,0,0" ColorRGB="65535" MatLayersMask="0" OutdoorOnly="0" CastShadow="1" CastShadowMinspec="1" LodRatio="100" ViewDistRatio="100" HiddenInGame="0" GlobalInSegmentedWorld="0" RecvWind="0" RenderNearest="0" NoStaticDecals="0" CreatedThroughPool="0" EntityClass="FlowgraphEntity">
+    <FlowGraph Description="" Group="Lighting" enabled="1" MultiPlayer="ClientServer">
+     <Nodes>
+      <Node Id="1" Class="Game:Start" pos="-360,-170,0" flags="0">
+       <Inputs InGame="0" InEditor="1"/>
+      </Node>
+      <Node Id="3" Class="Debug:InputKey" pos="-170,-120,0" flags="0">
+       <Inputs entityId="0" Key="9" NonDevMode="0"/>
+      </Node>
+      <Node Id="4" Class="Math:Counter" pos="40,-170,0" flags="0">
+       <Inputs max="2"/>
+      </Node>
+      <Node Id="6" Class="Math:Div" pos="190,-170,0" flags="0">
+       <Inputs A="0" B="2"/>
+      </Node>
+      <Node Id="7" Class="Math:Equal" pos="320,-170,0" flags="0">
+       <Inputs A="0" B="0"/>
+      </Node>
+      <Node Id="11" Class="Image:ColorGradient" pos="470,-170,0" flags="0">
+       <Inputs tex_TexturePath="textures/colorcharts/generic/default_cch.tif" TransitionTime="0"/>
+      </Node>
+      <Node Id="12" Class="Image:ColorGradient" pos="470,-100,0" flags="0">
+       <Inputs tex_TexturePath="textures/colorcharts/generic/debug_white_black_clipping_cch.tif" TransitionTime="0"/>
+      </Node>
+      <Node Id="15" Name="Toggle_Debug_Color_Chart_for_Black_and_White_Clipping" Class="_commentbox" pos="-395.39365,-220.16589,0" flags="0">
+       <Inputs TextSize="1" Color="0.27451,0.352941,0.705882" DisplayFilled="1" DisplayBox="1" SortPriority="16"/>
+       <ResizeBorder X="0" Y="0" Width="1314.1587" Height="197.31313"/>
+       <NodeSize Width="1314.1587" Height="224.70375"/>
+      </Node>
+      <Node Id="16" Class="Game:Start" pos="-360,-70,0" flags="0">
+       <Inputs InGame="1" InEditor="0"/>
+      </Node>
+     </Nodes>
+     <Edges>
+      <Edge nodeIn="3" nodeOut="1" portIn="Enable" portOut="output" enabled="1"/>
+      <Edge nodeIn="4" nodeOut="1" portIn="reset" portOut="output" enabled="1"/>
+      <Edge nodeIn="4" nodeOut="3" portIn="in" portOut="Pressed" enabled="1"/>
+      <Edge nodeIn="6" nodeOut="4" portIn="A" portOut="count" enabled="1"/>
+      <Edge nodeIn="7" nodeOut="6" portIn="A" portOut="out" enabled="1"/>
+      <Edge nodeIn="11" nodeOut="7" portIn="Trigger" portOut="true" enabled="1"/>
+      <Edge nodeIn="12" nodeOut="7" portIn="Trigger" portOut="false" enabled="1"/>
+      <Edge nodeIn="3" nodeOut="16" portIn="Disable" portOut="output" enabled="1"/>
+     </Edges>
+     <GraphTokens />
+    </FlowGraph>
+   </Object>
+   <Object Type="GeomEntity" Layer="Main" Id="{AE18071F-30FE-4CC2-9FA3-DAF2BF273121}" Name="Dome" Pos="533.48718,458.04596,142.33749" FloorNumber="-1" Rotate="0.89100647,0,0,0.45399058" ColorRGB="65535" Material="Objects/sky/forest_sky_dome" MatLayersMask="0" Geometry="Objects/sky/Forest_skydome.cgf" OutdoorOnly="0" CastShadow="1" CastShadowMinspec="8" LodRatio="100" ViewDistRatio="255" HiddenInGame="0" GlobalInSegmentedWorld="0" RecvWind="0" RenderNearest="0" NoStaticDecals="0" CreatedThroughPool="0" EntityClass="GeomEntity">
+    <Properties esFaction="">
+     <Health bInvulnerable="1" MaxHealth="500" bOnlyEnemyFire="1"/>
+     <RenderProxyOptions bAnimateOffScreenShadow="0"/>
+    </Properties>
+   </Object>
+   <Object Type="Entity" Layer="Main" Id="{A294F12E-C407-46FA-8179-D7B955D55105}" Name="Layer_Logic" Pos="733.87146,422.77277,287.42068" FloorNumber="-1" Rotate="1,0,0,0" ColorRGB="65535" MatLayersMask="0" OutdoorOnly="0" CastShadow="1" CastShadowMinspec="1" LodRatio="100" ViewDistRatio="100" HiddenInGame="0" GlobalInSegmentedWorld="0" RecvWind="0" RenderNearest="0" NoStaticDecals="0" CreatedThroughPool="0" EntityClass="AreaTrigger">
+    <Properties bEnabled="1" esFactionFilter="" bInVehicleOnly="0" bOnlyLocalPlayer="0" bOnlyPlayers="1" PlaySequence="" ScriptCommand="" bTriggerOnce="1">
+     <MultiplayerOptions bNetworked="0" bPerPlayer="0"/>
+    </Properties>
+    <FlowGraph Description="" Group="Layer_Switching" enabled="1" MultiPlayer="ClientServer">
+     <Nodes>
+      <Node Id="38" Class="Engine:LayerSwitch" pos="-3070,550,0" flags="0">
+       <Inputs Layer="AB3"/>
+      </Node>
+      <Node Id="65" Class="Engine:LayerSwitch" pos="-3070,370,0" flags="0">
+       <Inputs Layer="AB1"/>
+      </Node>
+      <Node Id="75" Class="Engine:LayerSwitch" pos="-3070,460,0" flags="0">
+       <Inputs Layer="AB2"/>
+      </Node>
+      <Node Id="80" Class="entity:AreaTrigger" pos="-3390,480,0" flags="0" EntityGUID="{B620E097-E48F-4DFC-B697-8F87232BCF78}" EntityGUID_64="4DFCE48FB620E097">
+       <Inputs entityId="0" Disable="0" Enable="0" Enter="0" Leave="0"/>
+      </Node>
+      <Node Id="81" Class="Engine:LayerSwitch" pos="-1710,540,0" flags="0">
+       <Inputs Layer="AB3"/>
+      </Node>
+      <Node Id="86" Class="Engine:LayerSwitch" pos="-1710,360,0" flags="0">
+       <Inputs Layer="AB1"/>
+      </Node>
+      <Node Id="91" Class="Engine:LayerSwitch" pos="-1710,450,0" flags="0">
+       <Inputs Layer="AB2"/>
+      </Node>
+      <Node Id="96" Class="entity:AreaTrigger" pos="-2030,480,0" flags="0" EntityGUID="{4E7527A2-B2C3-4448-A117-950D57718B12}" EntityGUID_64="4448B2C34E7527A2">
+       <Inputs entityId="0" Disable="0" Enable="0" Enter="0" Leave="0"/>
+      </Node>
+      <Node Id="98" Class="entity:AreaTrigger" pos="-2720,480,0" flags="0" EntityGUID="{64DD7CC3-941F-4860-8995-D05529BC29B9}" EntityGUID_64="4860941F64DD7CC3">
+       <Inputs entityId="0" Disable="0" Enable="0" Enter="0" Leave="0"/>
+      </Node>
+      <Node Id="99" Class="Engine:LayerSwitch" pos="-2410,540,0" flags="0">
+       <Inputs Layer="AB3"/>
+      </Node>
+      <Node Id="104" Class="Engine:LayerSwitch" pos="-2410,360,0" flags="0">
+       <Inputs Layer="AB1"/>
+      </Node>
+      <Node Id="109" Class="Engine:LayerSwitch" pos="-2410,450,0" flags="0">
+       <Inputs Layer="AB2"/>
+      </Node>
+      <Node Id="116" Class="Engine:LayerSwitch" pos="-990,530,0" flags="0">
+       <Inputs Layer="AB3"/>
+      </Node>
+      <Node Id="121" Class="Engine:LayerSwitch" pos="-990,350,0" flags="0">
+       <Inputs Layer="AB1"/>
+      </Node>
+      <Node Id="126" Class="Engine:LayerSwitch" pos="-990,440,0" flags="0">
+       <Inputs Layer="AB2"/>
+      </Node>
+      <Node Id="131" Class="entity:AreaTrigger" pos="-1360,460,0" flags="0" EntityGUID="{A17BF047-1968-4131-9A6F-D7C03062C63D}" EntityGUID_64="41311968A17BF047">
+       <Inputs entityId="0" Disable="0" Enable="0" Enter="0" Leave="0"/>
+      </Node>
+      <Node Id="133" Class="Engine:LayerSwitch" pos="-990,620,0" flags="0">
+       <Inputs Layer="AB4"/>
+      </Node>
+      <Node Id="143" Class="Engine:LayerSwitch" pos="-1710,630,0" flags="0">
+       <Inputs Layer="AB4"/>
+      </Node>
+      <Node Id="148" Class="Engine:LayerSwitch" pos="-2410,630,0" flags="0">
+       <Inputs Layer="AB4"/>
+      </Node>
+      <Node Id="153" Class="Engine:LayerSwitch" pos="-3070,640,0" flags="0">
+       <Inputs Layer="AB4"/>
+      </Node>
+      <Node Id="158" Class="Game:Start" pos="-3380,40,0" flags="0">
+       <Inputs InGame="1" InEditor="0"/>
+      </Node>
+      <Node Id="160" Class="entity:SpawnPoint" pos="-3150,40,0" flags="0" EntityGUID="{45D9EF6C-3A8B-4485-889C-4FBD476378BC}" EntityGUID_64="44853A8B45D9EF6C">
+       <Inputs entityId="0" Disable="0" Enable="0" Spawn="0"/>
+      </Node>
+      <Node Id="161" Name="Spawn_player_at_spawnpoint_in_game_only" Class="_commentbox" pos="-3437.033,-67.634735,0" flags="0">
+       <Inputs TextSize="1" Color="0.27451,0.352941,0.705882" DisplayFilled="1" DisplayBox="1" SortPriority="16"/>
+       <ResizeBorder X="0" Y="0" Width="516.54297" Height="179.79285"/>
+       <NodeSize Width="775.20422" Height="234.57408"/>
+      </Node>
+      <Node Id="162" Name="AB1" Class="_commentbox" pos="-3438.2461,246.12817,0" flags="0">
+       <Inputs TextSize="1" Color="0.2468,0.694081,0.2468" DisplayFilled="1" DisplayBox="1" SortPriority="16"/>
+       <ResizeBorder X="0" Y="0" Width="616.59283" Height="458.76855"/>
+       <NodeSize Width="616.59283" Height="513.5498"/>
+      </Node>
+      <Node Id="163" Name="AB2" Class="_commentbox" pos="-2762.3303,245.03711,0" flags="0">
+       <Inputs TextSize="1" Color="0.242796,0.673049,0.701169" DisplayFilled="1" DisplayBox="1" SortPriority="16"/>
+       <ResizeBorder X="0" Y="0" Width="616.59283" Height="460.41815"/>
+       <NodeSize Width="616.59283" Height="515.1994"/>
+      </Node>
+      <Node Id="164" Name="AB3" Class="_commentbox" pos="-2079.0164,245.47668,0" flags="0">
+       <Inputs TextSize="1" Color="0.708298,0.708298,0.238828" DisplayFilled="1" DisplayBox="1" SortPriority="16"/>
+       <ResizeBorder X="0" Y="0" Width="616.59283" Height="459.12439"/>
+       <NodeSize Width="616.59283" Height="513.90564"/>
+      </Node>
+      <Node Id="165" Name="AB4" Class="_commentbox" pos="-1399.6055,246.61633,0" flags="0">
+       <Inputs TextSize="1" Color="0.339223,0.0160677,0.0160677" DisplayFilled="1" DisplayBox="1" SortPriority="16"/>
+       <ResizeBorder X="0" Y="0" Width="706.86926" Height="457.83057"/>
+       <NodeSize Width="706.86926" Height="512.61182"/>
+      </Node>
+     </Nodes>
+     <Edges>
+      <Edge nodeIn="38" nodeOut="80" portIn="Hide" portOut="Enter" enabled="1"/>
+      <Edge nodeIn="65" nodeOut="80" portIn="Unhide" portOut="Enter" enabled="1"/>
+      <Edge nodeIn="75" nodeOut="80" portIn="Unhide" portOut="Enter" enabled="1"/>
+      <Edge nodeIn="153" nodeOut="80" portIn="Hide" portOut="Enter" enabled="1"/>
+      <Edge nodeIn="81" nodeOut="96" portIn="Unhide" portOut="Enter" enabled="1"/>
+      <Edge nodeIn="86" nodeOut="96" portIn="Hide" portOut="Enter" enabled="1"/>
+      <Edge nodeIn="91" nodeOut="96" portIn="Unhide" portOut="Enter" enabled="1"/>
+      <Edge nodeIn="143" nodeOut="96" portIn="Hide" portOut="Enter" enabled="1"/>
+      <Edge nodeIn="99" nodeOut="98" portIn="Unhide" portOut="Enter" enabled="1"/>
+      <Edge nodeIn="104" nodeOut="98" portIn="Unhide" portOut="Enter" enabled="1"/>
+      <Edge nodeIn="109" nodeOut="98" portIn="Unhide" portOut="Enter" enabled="1"/>
+      <Edge nodeIn="148" nodeOut="98" portIn="Unhide" portOut="Enter" enabled="1"/>
+      <Edge nodeIn="116" nodeOut="131" portIn="Hide" portOut="Enter" enabled="1"/>
+      <Edge nodeIn="121" nodeOut="131" portIn="Hide" portOut="Enter" enabled="1"/>
+      <Edge nodeIn="126" nodeOut="131" portIn="Unhide" portOut="Enter" enabled="1"/>
+      <Edge nodeIn="133" nodeOut="131" portIn="Unhide" portOut="Enter" enabled="1"/>
+      <Edge nodeIn="160" nodeOut="158" portIn="Spawn" portOut="output" enabled="1"/>
+     </Edges>
+     <GraphTokens />
+    </FlowGraph>
+   </Object>
+   <Object Type="Shape" Layer="Main" Id="{1A209635-37E8-4943-BE8F-A83E225CE33F}" Name="AB1_Trigger_Shape" Pos="904.72852,306.11319,1" FloorNumber="-1" Rotate="1,0,0,0" ColorRGB="255" Width="0" Height="0" AreaId="0" GroupId="0" Priority="0" Closed="1" DisplayFilled="1" DisplaySoundInfo="0" Agent_height="1.8" Agent_width="0.5" Render_voxel_grid="0" voxel_offset_x="0" voxel_offset_y="0" EntityClass="AreaShape">
+    <Points>
+     <Point Pos="0,0,0"/>
+     <Point Pos="-88.662292,-38.5224,0"/>
+     <Point Pos="-172.42932,-40.138367,0"/>
+     <Point Pos="-161.29437,138.44461,0"/>
+     <Point Pos="5.2258301,110.0412,0"/>
+    </Points>
+    <Entities>
+     <Entity Id="{B620E097-E48F-4DFC-B697-8F87232BCF78}"/>
+    </Entities>
+    <SoundData Side1="0" Side2="0" Side3="0" Side4="0" Side5="0" Roof="0" Floor="0"/>
+   </Object>
+   <Object Type="EnvironmentProbe" Layer="Main" Id="{0B3CAD38-83F6-49D6-83D3-2C69BAA7E3A1}" Name="EnvironmentProbe1" Pos="750.67365,344.76892,190.21371" FloorNumber="-1" Rotate="1,0,0,0" ColorRGB="65535" cubemap_resolution="128" preview_cubemap="0" OutdoorOnly="0" CastShadow="1" CastShadowMinspec="1" LodRatio="100" ViewDistRatio="100" HiddenInGame="0" GlobalInSegmentedWorld="0" RecvWind="0" RenderNearest="0" NoStaticDecals="0" CreatedThroughPool="0" EntityClass="EnvironmentLight">
+    <Properties bActive="1" _bCheapLight="0" bForceDisableCheapLight="0" Radius="75" _nVersion="0">
+     <Color clrDiffuse="0.227137,0.227137,0.227137" fDiffuseMultiplier="0.5" fHDRDynamic="0" fSpecularMultiplier="0.5"/>
+     <Options bAffectsThisAreaOnly="0" fAttenuationFalloffMax="1" file_deferred_clip_geom="" _texture_deferred_cubemap="" bDeferredClipBounds="0" bDeferredLight="1" bDisableX360Opto="0" flare="" bIgnoresVisAreas="1" SortPriority="0"/>
+     <OptionsAdvanced texture_deferred_cubemap="textures/cubemaps/forest/ab1_ab2_main_cm.tif"/>
+     <Projection fBoxHeight="10" fBoxLength="10" bBoxProject="0" fBoxWidth="10" vFadeDimensionsBottom="0" vFadeDimensionsFar="0" vFadeDimensionsLeft="0" vFadeDimensionsNear="0" vFadeDimensionsRight="0" vFadeDimensionsTop="0"/>
+    </Properties>
+   </Object>
+   <Object Type="EnvironmentProbe" Layer="Main" Id="{A849003C-7681-4B08-B34F-DA4B7BDC4003}" Name="EnvironmentProbe10" Pos="806.12445,344.76892,190.21371" FloorNumber="-1" Rotate="1,0,0,0" ColorRGB="65535" cubemap_resolution="128" preview_cubemap="0" OutdoorOnly="0" CastShadow="1" CastShadowMinspec="1" LodRatio="100" ViewDistRatio="100" HiddenInGame="0" GlobalInSegmentedWorld="0" RecvWind="0" RenderNearest="0" NoStaticDecals="0" CreatedThroughPool="0" EntityClass="EnvironmentLight">
+    <Properties bActive="1" _bCheapLight="0" bForceDisableCheapLight="0" Radius="80" _nVersion="0">
+     <Color clrDiffuse="0.119264,0.119264,0.119264" fDiffuseMultiplier="1" fHDRDynamic="0" fSpecularMultiplier="0.5"/>
+     <Options bAffectsThisAreaOnly="0" fAttenuationFalloffMax="1" file_deferred_clip_geom="" _texture_deferred_cubemap="" bDeferredClipBounds="0" bDeferredLight="1" bDisableX360Opto="0" flare="" bIgnoresVisAreas="1" SortPriority="0"/>
+     <OptionsAdvanced texture_deferred_cubemap="textures/cubemaps/forest/ab1_ab2_main_cm.tif"/>
+     <Projection fBoxHeight="10" fBoxLength="10" bBoxProject="0" fBoxWidth="10" vFadeDimensionsBottom="0" vFadeDimensionsFar="0" vFadeDimensionsLeft="0" vFadeDimensionsNear="0" vFadeDimensionsRight="0" vFadeDimensionsTop="0"/>
+    </Properties>
+   </Object>
+   <Object Type="Entity" Layer="Main" Id="{A17BF047-1968-4131-9A6F-D7C03062C63D}" Name="AB4_Trigger_Cave" Pos="717.37146,422.77277,287.42068" FloorNumber="-1" Rotate="1,0,0,0" ColorRGB="65535" MatLayersMask="0" OutdoorOnly="0" CastShadow="1" CastShadowMinspec="1" LodRatio="100" ViewDistRatio="100" HiddenInGame="0" GlobalInSegmentedWorld="0" RecvWind="0" RenderNearest="0" NoStaticDecals="0" CreatedThroughPool="0" EntityClass="AreaTrigger">
+    <Properties bEnabled="1" esFactionFilter="" bInVehicleOnly="0" bOnlyLocalPlayer="0" bOnlyPlayers="1" PlaySequence="" ScriptCommand="" bTriggerOnce="0">
+     <MultiplayerOptions bNetworked="0" bPerPlayer="0"/>
+    </Properties>
+   </Object>
+   <Object Type="Camera" Layer="Main" Id="{E70EE46B-2DEA-42EE-883A-E2D1FFB7FB86}" Name="IntroCam" Pos="866.65436,326.306,175.99725" FloorNumber="-1" Rotate="0.75094014,0,0,0.66037023" ColorRGB="16776960" FOV="0.698132" NearZ="0.25" FarZ="1024" EntityClass="CameraSource">
+    <ShakeParams AmplitudeA="1,1,1" AmplitudeAMult="0" FrequencyA="1,1,1" FrequencyAMult="0" NoiseAAmpMult="0" NoiseAFreqMult="0" TimeOffsetA="0" AmplitudeB="1,1,1" AmplitudeBMult="0" FrequencyB="1,1,1" FrequencyBMult="0" NoiseBAmpMult="0" NoiseBFreqMult="0" TimeOffsetB="0"/>
+   </Object>
+   <Object Type="NavigationSeedPoint" Layer="Main" Id="{AFAC9C75-6071-4D28-A6D7-89AE2C4FFB8A}" Name="NavigationSeedPoint" Pos="528.28308,517.08936,145.5" FloorNumber="-1" Rotate="1,0,0,0" ColorRGB="16711680" EntityClass="NavigationSeedPoint"/>
+   <Object Type="Entity" Layer="Main" Id="{B620E097-E48F-4DFC-B697-8F87232BCF78}" Name="AB1_Trigger_Start" Pos="729.37146,422.77277,287.42068" FloorNumber="-1" Rotate="1,0,0,0" ColorRGB="65535" MatLayersMask="0" OutdoorOnly="0" CastShadow="1" CastShadowMinspec="1" LodRatio="100" ViewDistRatio="100" HiddenInGame="0" GlobalInSegmentedWorld="0" RecvWind="0" RenderNearest="0" NoStaticDecals="0" CreatedThroughPool="0" EntityClass="AreaTrigger">
+    <Properties bEnabled="1" esFactionFilter="" bInVehicleOnly="0" bOnlyLocalPlayer="0" bOnlyPlayers="1" PlaySequence="" ScriptCommand="" bTriggerOnce="0">
+     <MultiplayerOptions bNetworked="0" bPerPlayer="0"/>
+    </Properties>
+   </Object>
+   <Object Type="EnvironmentProbe" Layer="Main" Id="{B713119D-76F7-4124-B2DF-A258E8ADEA02}" Name="EnvironmentProbe2" Pos="531.21259,454.43106,190.21371" FloorNumber="-1" Rotate="1,0,0,0" ColorRGB="65535" cubemap_resolution="128" preview_cubemap="0" OutdoorOnly="0" CastShadow="1" CastShadowMinspec="1" LodRatio="100" ViewDistRatio="100" HiddenInGame="0" GlobalInSegmentedWorld="0" RecvWind="0" RenderNearest="0" NoStaticDecals="0" CreatedThroughPool="0" EntityClass="EnvironmentLight">
+    <Properties bActive="1" _bCheapLight="0" bForceDisableCheapLight="0" Radius="160" _nVersion="0">
+     <Color clrDiffuse="0.334458,0.334458,0.334458" fDiffuseMultiplier="0.1" fHDRDynamic="0" fSpecularMultiplier="0.2"/>
+     <Options bAffectsThisAreaOnly="1" fAttenuationFalloffMax="1" file_deferred_clip_geom="" _texture_deferred_cubemap="" bDeferredClipBounds="0" bDeferredLight="1" bDisableX360Opto="0" flare="" bIgnoresVisAreas="0" SortPriority="0"/>
+     <OptionsAdvanced texture_deferred_cubemap="textures/cubemaps/forest/ab3_ab4_main_cm.tif"/>
+     <Projection fBoxHeight="10" fBoxLength="10" bBoxProject="0" fBoxWidth="10" vFadeDimensionsBottom="0" vFadeDimensionsFar="0" vFadeDimensionsLeft="0" vFadeDimensionsNear="0" vFadeDimensionsRight="0" vFadeDimensionsTop="0"/>
+    </Properties>
+   </Object>
+   <Object Type="Entity" Layer="Main" Id="{4E7527A2-B2C3-4448-A117-950D57718B12}" Name="AB3_Trigger_Town" Pos="721.37146,422.77277,287.42068" FloorNumber="-1" Rotate="1,0,0,0" ColorRGB="65535" MatLayersMask="0" OutdoorOnly="0" CastShadow="1" CastShadowMinspec="1" LodRatio="100" ViewDistRatio="100" HiddenInGame="0" GlobalInSegmentedWorld="0" RecvWind="0" RenderNearest="0" NoStaticDecals="0" CreatedThroughPool="0" EntityClass="AreaTrigger">
+    <Properties bEnabled="1" esFactionFilter="" bInVehicleOnly="0" bOnlyLocalPlayer="0" bOnlyPlayers="1" PlaySequence="" ScriptCommand="" bTriggerOnce="0">
+     <MultiplayerOptions bNetworked="0" bPerPlayer="0"/>
+    </Properties>
+   </Object>
+   <Object Type="Shape" Layer="Main" Id="{0DD097AB-DD14-47C5-87EC-9EE44492A87B}" Name="AB2_Trigger_Shape" Pos="527.62848,300.56961,0.88331604" FloorNumber="-1" Rotate="1,0,0,0" ColorRGB="255" Width="0" Height="0" AreaId="0" GroupId="0" Priority="0" Closed="1" DisplayFilled="1" DisplaySoundInfo="0" Agent_height="1.8" Agent_width="0.5" Render_voxel_grid="0" voxel_offset_x="0" voxel_offset_y="0" EntityClass="AreaShape">
+    <Points>
+     <Point Pos="0,0,0"/>
+     <Point Pos="114.56427,148.14191,0"/>
+     <Point Pos="141.81665,78.979919,0"/>
+     <Point Pos="168.18109,105.60733,0"/>
+     <Point Pos="212.0589,86.368652,0"/>
+     <Point Pos="204.31732,-34.742706,0"/>
+    </Points>
+    <Entities>
+     <Entity Id="{64DD7CC3-941F-4860-8995-D05529BC29B9}"/>
+    </Entities>
+    <SoundData Side1="0" Side2="0" Side3="0" Side4="0" Side5="0" Side6="0" Roof="0" Floor="0"/>
+   </Object>
+   <Object Type="Shape" Layer="Main" Id="{82ABF6AD-0AF1-467E-9DD2-8D6A4F191433}" Name="AB3_Trigger_Shape" Pos="526.80481,301.26141,1" FloorNumber="-1" Rotate="1,0,0,0" ColorRGB="255" Width="0" Height="0" AreaId="0" GroupId="0" Priority="0" Closed="1" DisplayFilled="1" DisplaySoundInfo="0" Agent_height="0" Agent_width="0" Render_voxel_grid="0" voxel_offset_x="0" voxel_offset_y="0" EntityClass="AreaShape">
+    <Points>
+     <Point Pos="0,0,0"/>
+     <Point Pos="114.9823,148.026,0"/>
+     <Point Pos="161.89557,406.70636,0"/>
+     <Point Pos="89.684814,575.41949,0"/>
+     <Point Pos="34.131714,555.77814,0"/>
+     <Point Pos="-198.27991,65.51767,0"/>
+     <Point Pos="-164.26331,36.241486,0"/>
+     <Point Pos="-50.701874,54.07666,0"/>
+    </Points>
+    <Entities>
+     <Entity Id="{4E7527A2-B2C3-4448-A117-950D57718B12}"/>
+    </Entities>
+    <SoundData Side1="0" Side2="0" Side3="0" Side4="0" Side5="0" Side6="0" Side7="0" Side8="0" Roof="0" Floor="0"/>
+   </Object>
+   <Object Type="NavigationArea" Layer="Main" Id="{3F1B0DB3-8BD9-4D90-8703-ECD9C174C14D}" Name="NavigationArea1" Pos="386.47198,380.85214,141.36644" FloorNumber="-1" Rotate="1,0,0,0" ColorRGB="16743936" Height="40" Exclusion="0" DisplayFilled="0">
+    <AffectedAgentTypes MediumSizedCharacters="1" VehicleMedium="0"/>
+    <Points>
+     <Point Pos="0,0,0"/>
+     <Point Pos="34.220703,-10.743011,0"/>
+     <Point Pos="58.917664,2.9354553,0"/>
+     <Point Pos="75.342316,10.837189,0"/>
+     <Point Pos="91.74649,25.088257,0"/>
+     <Point Pos="101.77283,40.854279,0"/>
+     <Point Pos="106.79105,34.414276,0"/>
+     <Point Pos="116.8559,35.556671,0"/>
+     <Point Pos="120.688,40.5737,0"/>
+     <Point Pos="125.0946,38.191742,0"/>
+     <Point Pos="132.8075,29.138489,0"/>
+     <Point Pos="142.70038,22.42746,0"/>
+     <Point Pos="155.22626,21.533844,0"/>
+     <Point Pos="159.78955,19.520752,0"/>
+     <Point Pos="160.05896,8.4234009,0"/>
+     <Point Pos="154.49225,1.273407,0"/>
+     <Point Pos="159.91144,-21.232391,0"/>
+     <Point Pos="173.98761,-31.98587,0"/>
+     <Point Pos="193.65186,-26.160828,0"/>
+     <Point Pos="197.93463,-32.983337,0"/>
+     <Point Pos="198.11761,-49.8508,0"/>
+     <Point Pos="227.47925,-49.123871,0"/>
+     <Point Pos="231.47571,-43.243469,0"/>
+     <Point Pos="234.45331,-43.373535,0"/>
+     <Point Pos="240.96387,-52.017151,0"/>
+     <Point Pos="274.02478,-51.318329,0"/>
+     <Point Pos="289.42737,-54.742218,0"/>
+     <Point Pos="298.46698,-62.494476,0"/>
+     <Point Pos="300.63129,-70.943054,0"/>
+     <Point Pos="313.81354,-64.461029,0"/>
+     <Point Pos="321.40057,-67.035126,0"/>
+     <Point Pos="326.81976,-57.879211,0"/>
+     <Point Pos="333.29443,-53.588165,0"/>
+     <Point Pos="340.27881,-54.542206,0"/>
+     <Point Pos="349.57233,-53.947876,0"/>
+     <Point Pos="357.39044,-53.557709,0"/>
+     <Point Pos="371.70648,-50.025818,0"/>
+     <Point Pos="383.10614,-48.861969,0"/>
+     <Point Pos="387.01465,-44.217957,0"/>
+     <Point Pos="395.34717,-44.467499,0"/>
+     <Point Pos="403.18579,-41.240204,0"/>
+     <Point Pos="419.08643,-52.453033,0"/>
+     <Point Pos="428.52515,-51.262573,0"/>
+     <Point Pos="431.06189,-49.699036,0"/>
+     <Point Pos="450.35925,-51.315155,0"/>
+     <Point Pos="450.0387,-44.199677,0"/>
+     <Point Pos="454.16913,-42.784698,0"/>
+     <Point Pos="457.39929,-46.630798,0"/>
+     <Point Pos="461.40717,-56.212769,0"/>
+     <Point Pos="478.04242,-65.156189,0"/>
+     <Point Pos="483.5578,-53.671844,0"/>
+     <Point Pos="467.65265,-47.105072,0"/>
+     <Point Pos="472.51758,-26.543091,0"/>
+     <Point Pos="447.69714,-21.980652,0"/>
+     <Point Pos="432.93433,-29.272522,0"/>
+     <Point Pos="408.14417,-28.314972,0"/>
+     <Point Pos="401.21814,-28.522247,0"/>
+     <Point Pos="381.34509,-20.551819,0"/>
+     <Point Pos="348.38568,-28.102356,0"/>
+     <Point Pos="336.16144,-28.471069,0"/>
+     <Point Pos="329.96533,-36.513824,0"/>
+     <Point Pos="327.01746,-35.267059,0"/>
+     <Point Pos="324.88586,-30.287842,0"/>
+     <Point Pos="327.86719,-24.913879,0"/>
+     <Point Pos="326.2525,-22.144379,0"/>
+     <Point Pos="329.59015,-15.985168,0"/>
+     <Point Pos="330.34741,-5.9347839,0"/>
+     <Point Pos="328.40112,-3.4638977,0"/>
+     <Point Pos="320.55273,13.732971,0"/>
+     <Point Pos="328.86792,29.207886,0"/>
+     <Point Pos="327.07227,47.129242,0"/>
+     <Point Pos="307.85779,49.096771,0"/>
+     <Point Pos="296.7851,32.796326,0"/>
+     <Point Pos="294.11102,38.367615,0"/>
+     <Point Pos="284.65979,36.903717,0"/>
+     <Point Pos="269.46527,21.818298,0"/>
+     <Point Pos="272.01465,13.718933,0"/>
+     <Point Pos="257.24908,13.932343,0"/>
+     <Point Pos="249.93567,6.1395874,0"/>
+     <Point Pos="244.03656,-3.2583313,0"/>
+     <Point Pos="226.49573,-6.1837463,0"/>
+     <Point Pos="221.82166,-3.1452942,0"/>
+     <Point Pos="228.91504,37.406128,0"/>
+     <Point Pos="220.56714,60.434204,0"/>
+     <Point Pos="210.09509,69.195099,0"/>
+     <Point Pos="198.34344,72.77298,0"/>
+     <Point Pos="201.57465,101.02713,0"/>
+     <Point Pos="211.65784,114.73047,0"/>
+     <Point Pos="203.84845,137.73849,0"/>
+     <Point Pos="211.25696,167.60892,0"/>
+     <Point Pos="194.70782,190.56381,0"/>
+     <Point Pos="177.97498,181.12473,0"/>
+     <Point Pos="138.92975,141.44659,0"/>
+     <Point Pos="107.38131,143.73633,0"/>
+     <Point Pos="107.19244,139.80835,0"/>
+     <Point Pos="136.52466,137.64075,0"/>
+     <Point Pos="137.02734,132.1698,0"/>
+     <Point Pos="146.07776,127.75558,0"/>
+     <Point Pos="85.783905,61.292053,0"/>
+     <Point Pos="57.897217,58.992004,0"/>
+     <Point Pos="32.670868,51.993347,0"/>
+     <Point Pos="-4.309082,25.784973,0"/>
+    </Points>
+    <SoundData Side1="0" Side2="0" Side3="0" Side4="0" Side5="0" Side6="0" Side7="0" Side8="0" Side9="0" Side10="0" Side11="0" Side12="0" Side13="0" Side14="0" Side15="0" Side16="0" Side17="0" Side18="0" Side19="0" Side20="0" Side21="0" Side22="0" Side23="0" Side24="0" Side25="0" Side26="0" Side27="0" Side28="0" Side29="0" Side30="0" Side31="0" Side32="0" Side33="0" Side34="0" Side35="0" Side36="0" Side37="0" Side38="0" Side39="0" Side40="0" Side41="0" Side42="0" Side43="0" Side44="0" Side45="0" Side46="0" Side47="0" Side48="0" Side49="0" Side50="0" Side51="0" Side52="0" Side53="0" Side54="0" Side55="0" Side56="0" Side57="0" Side58="0" Side59="0" Side60="0" Side61="0" Side62="0" Side63="0" Side64="0" Side65="0" Side66="0" Side67="0" Side68="0" Side69="0" Side70="0" Side71="0" Side72="0" Side73="0" Side74="0" Side75="0" Side76="0" Side77="0" Side78="0" Side79="0" Side80="0" Side81="0" Side82="0" Side83="0" Side84="0" Side85="0" Side86="0" Side87="0" Side88="0" Side89="0" Side90="0" Side91="0" Side92="0" Side93="0" Side94="0" Side95="0" Side96="0" Side97="0" Side98="0" Side99="0" Side100="0" Side101="0" Side102="0" Roof="0" Floor="0"/>
+   </Object>
+   <Object Type="Entity" Layer="Main" Id="{64DD7CC3-941F-4860-8995-D05529BC29B9}" Name="AB2_Trigger_Transition" Pos="725.37146,422.77277,287.42068" FloorNumber="-1" Rotate="1,0,0,0" ColorRGB="65535" MatLayersMask="0" OutdoorOnly="0" CastShadow="1" CastShadowMinspec="1" LodRatio="100" ViewDistRatio="100" HiddenInGame="0" GlobalInSegmentedWorld="0" RecvWind="0" RenderNearest="0" NoStaticDecals="0" CreatedThroughPool="0" EntityClass="AreaTrigger">
+    <Properties bEnabled="1" esFactionFilter="" bInVehicleOnly="0" bOnlyLocalPlayer="0" bOnlyPlayers="1" PlaySequence="" ScriptCommand="" bTriggerOnce="0">
+     <MultiplayerOptions bNetworked="0" bPerPlayer="0"/>
+    </Properties>
+   </Object>
+   <Object Type="Entity" Layer="Main" Id="{5C2DFFD1-5419-49F0-AFE9-01EB2E989C58}" Name="Light_Sun_Flare" Pos="866.04364,320.28174,175.7424" FloorNumber="-1" Rotate="1,0,0,0" ColorRGB="65535" Material="EngineAssets/Materials/lens_optics" MatLayersMask="0" OutdoorOnly="0" CastShadow="1" CastShadowMinspec="8" LodRatio="100" ViewDistRatio="100" HiddenInGame="0" GlobalInSegmentedWorld="0" RecvWind="0" RenderNearest="0" NoStaticDecals="0" CreatedThroughPool="0" EntityClass="Light">
+    <Properties bActive="1" _bCheapLight="0" bForceDisableCheapLight="0" Radius="10" _nVersion="0">
+     <Color clrDiffuse="1,1,1" fDiffuseMultiplier="1" fHDRDynamic="0" fSpecularMultiplier="1"/>
+     <Options bAffectsThisAreaOnly="1" bAmbient="0" fAttenuationFalloffMax="1" nCastShadows="0" file_deferred_clip_geom="" texture_deferred_cubemap="" bDeferredClipBounds="0" bDeferredLight="1" bDisableX360Opto="0" bFakeLight="1" flare_Flare="sample_flares.generic.generic_sun_flare" bFlareEnable="1" fFlareFOV="360" bIgnoresVisAreas="0" bIrradianceVolumes="0" fShadowBias="1" nShadowMinResPercent="0" fShadowResolutionScale="1" fShadowSlopeBias="1" fShadowUpdateMinRadius="10" fShadowUpdateRatio="1" SortPriority="0"/>
+     <Projector bProjectInAllDirs="0" fProjectorFov="90" fProjectorNearPlane="0" texture_Texture=""/>
+     <Shape bAreaLight="0" fDiffuseSoftness="0.75" fLightFov="180" fPlaneHeight="1" fPlaneWidth="1" texture_Texture="" bTextureReflection="1" vFadeDimensionsBottom="0" vFadeDimensionsFar="0" vFadeDimensionsLeft="0" vFadeDimensionsNear="0" vFadeDimensionsRight="0" vFadeDimensionsTop="0"/>
+     <Style nAnimationPhase="0" fAnimationSpeed="1" bAttachToSun="1" lightanimation_LightAnimation="" nLightStyle="0" _fTimeScrubbed="0" bTimeScrubbingInTrackView="0"/>
+    </Properties>
+   </Object>
+   <Object Type="EnvironmentProbe" Layer="Main" Id="{3E1923D3-DDC8-437E-BA7F-12E2EDA56A8D}" Name="EnvironmentProbe8" Pos="866.5871,327.30478,190.21371" FloorNumber="-1" Rotate="1,0,0,0" ColorRGB="65535" cubemap_resolution="128" preview_cubemap="0" OutdoorOnly="0" CastShadow="1" CastShadowMinspec="1" LodRatio="100" ViewDistRatio="100" HiddenInGame="0" GlobalInSegmentedWorld="0" RecvWind="0" RenderNearest="0" NoStaticDecals="0" CreatedThroughPool="0" EntityClass="EnvironmentLight">
+    <Properties bActive="1" _bCheapLight="0" bForceDisableCheapLight="0" Radius="50" _nVersion="0">
+     <Color clrDiffuse="0.0600316,0.0677246,0.0563741" fDiffuseMultiplier="1" fHDRDynamic="0" fSpecularMultiplier="0.5"/>
+     <Options bAffectsThisAreaOnly="0" fAttenuationFalloffMax="1" file_deferred_clip_geom="" _texture_deferred_cubemap="" bDeferredClipBounds="0" bDeferredLight="1" bDisableX360Opto="0" flare="" bIgnoresVisAreas="1" SortPriority="0"/>
+     <OptionsAdvanced texture_deferred_cubemap="textures/cubemaps/forest/ab1_ab2_main_cm.tif"/>
+     <Projection fBoxHeight="10" fBoxLength="10" bBoxProject="1" fBoxWidth="10" vFadeDimensionsBottom="0" vFadeDimensionsFar="0" vFadeDimensionsLeft="0" vFadeDimensionsNear="0" vFadeDimensionsRight="0" vFadeDimensionsTop="0"/>
+    </Properties>
+   </Object>
+   <Object Type="Shape" Layer="Main" Id="{772524D9-5A85-4FCA-95A6-D169525FAB6C}" Name="AB4_Trigger_Shape" Pos="642.77332,448.87991,1" FloorNumber="-1" Rotate="1,0,0,0" ColorRGB="255" Width="0" Height="0" AreaId="0" GroupId="0" Priority="0" Closed="1" DisplayFilled="1" DisplaySoundInfo="0" Agent_height="1.8" Agent_width="0.5" Render_voxel_grid="0" voxel_offset_x="0" voxel_offset_y="0" EntityClass="AreaShape">
+    <Points>
+     <Point Pos="0,0,0"/>
+     <Point Pos="100.22668,-4.1393738,0"/>
+     <Point Pos="96.95105,-61.691376,0"/>
+     <Point Pos="52.765015,-42.270844,0"/>
+     <Point Pos="27.043274,-68.256287,0"/>
+    </Points>
+    <Entities>
+     <Entity Id="{A17BF047-1968-4131-9A6F-D7C03062C63D}"/>
+    </Entities>
+    <SoundData Side1="0" Side2="0" Side3="0" Side4="0" Side5="0" Roof="0" Floor="0"/>
+   </Object>
+   <Object Type="SequenceObject" Layer="Main" Id="{31ADF7DA-7654-4427-A635-CC4BB0560D4F}" Name="Forest_intro" FloorNumber="-1" Rotate="1,0,0,0" ColorRGB="16744319">
+    <Sequence SequenceVersion="2" Name="Forest_intro" Flags="0" StartTime="0" EndTime="4" ID="3">
+     <Nodes>
+      <Node Id="1" Type="2" Name="Director" Flags="7" ParamIdVersion="6">
+       <Track ParamId="6" Type="-1" Flags="0" StartTime="0" EndTime="4" HasCustomColor="0" ValueType="5">
+        <Key time="0" node="IntroCam" BlendTime="0"/>
+       </Track>
+      </Node>
+      <Node Id="2" Type="3" Name="IntroCam" Flags="1" ParamIdVersion="6" Pos="867.2052,325.811,176.24263" Rotate="0.67287868,0.029277757,0.03218912,0.7384721" Scale="1,1,1" EntityGUID="42EE2DEAE70EE46B" BoneLinkTransformEnabled="0" FOV="39.999992" NearZ="0.25" AmplitudeA="1,1,1" AmplitudeAMult="0" FrequencyA="1,1,1" FrequencyAMult="0" NoiseAAmpMult="0" NoiseAFreqMult="0" TimeOffsetA="0" AmplitudeB="1,1,1" AmplitudeBMult="0" FrequencyB="1,1,1" FrequencyBMult="0" NoiseBAmpMult="0" NoiseBFreqMult="0" TimeOffsetB="0">
+       <Track ParamId="0" Type="4" Flags="0" defaultValue="0,39.999989" HasCustomColor="0" ValueType="0">
+        <Key time="0" value="0,39.999992" flags="73" ds="1,0" dd="0.0099999905,0"/>
+        <Key time="4" value="4,55" flags="73" ds="0.0033333334,0" dd="0.0033333334,0"/>
+       </Track>
+       <Track ParamId="1" Type="4" HasCustomColor="0" ValueType="1">
+        <NewSubTrack Flags="0" defaultValue="4,866.88397" HasCustomColor="0">
+         <Key time="0" value="0,867.2052" flags="73" ds="1,0" dd="1,0"/>
+        </NewSubTrack>
+        <NewSubTrack Flags="0" defaultValue="4,325.85895" HasCustomColor="0">
+         <Key time="0" value="0,325.811" flags="73" ds="1,0" dd="1,0"/>
+        </NewSubTrack>
+        <NewSubTrack Flags="0" defaultValue="4,176.26396" HasCustomColor="0">
+         <Key time="0" value="0,176.24263" flags="73" ds="1,0" dd="1,0"/>
+        </NewSubTrack>
+       </Track>
+       <Track ParamId="2" Type="4" HasCustomColor="0" ValueType="2">
+        <NewSubTrack Flags="0" defaultValue="4,3.7582569" HasCustomColor="0">
+         <Key time="0" value="0,4.9877229" flags="73" ds="1,0" dd="0.0033389318,0"/>
+         <Key time="4" value="4,3.7582569" flags="73" ds="0.0033241047,-9.9313649e-005" dd="0.090000153,-0.0026889164"/>
+        </NewSubTrack>
+        <NewSubTrack Flags="0" defaultValue="4,-1.0672171e-005" HasCustomColor="0">
+         <Key time="0" value="0,0.0044191326" flags="73" ds="1,0" dd="0.0033389318,0"/>
+         <Key time="4" value="4,-1.0672171e-005" flags="73" ds="0.0033241047,2.3952892e-010" dd="0.090000153,6.4852457e-009"/>
+        </NewSubTrack>
+        <NewSubTrack Flags="0" defaultValue="4,81.627815" HasCustomColor="0">
+         <Key time="0" value="0,95.322083" flags="73" ds="1,0" dd="0.0033389318,0"/>
+         <Key time="4" value="4,81.513222" flags="73" ds="0.0033241047,0.00042528581" dd="0.090000153,0.011514612"/>
+        </NewSubTrack>
+       </Track>
+       <Track ParamId="30" Type="4" HasCustomColor="0" ValueType="1">
+        <NewSubTrack Flags="0" defaultValue="0,0" HasCustomColor="0">
+         <Key time="0" value="0,1" flags="73" ds="1,0" dd="0.00032106001,0"/>
+         <Key time="1" value="1,1" flags="73" ds="0.0062804492,-3.338953e-010" dd="0.18933542,-1.0065873e-008"/>
+         <Key time="2" value="2,1" flags="73" ds="0.0032263133,0" dd="0.0033333334,0"/>
+         <Key time="4.4666667" value="4.4666667,1" flags="73" ds="0.0033334098,0" dd="0.0033334098,0"/>
+         <Key time="5" value="5,0" flags="73" ds="0.5020833,0" dd="0.51111114,0"/>
+        </NewSubTrack>
+        <NewSubTrack Flags="0" defaultValue="0,0" HasCustomColor="0">
+         <Key time="0" value="0,1" flags="73" ds="1,0" dd="0.00032106001,0"/>
+         <Key time="1" value="1,1" flags="73" ds="0.0062804492,-3.338953e-010" dd="0.18933542,-1.0065873e-008"/>
+         <Key time="2" value="2,1" flags="73" ds="0.0032263133,0" dd="0.0033333334,0"/>
+         <Key time="4.4666667" value="4.4666667,1" flags="73" ds="0.0033334098,0" dd="0.0033334098,0"/>
+         <Key time="5" value="5,0" flags="73" ds="0.5020833,0" dd="0.51111114,0"/>
+        </NewSubTrack>
+        <NewSubTrack Flags="0" defaultValue="0,0" HasCustomColor="0">
+         <Key time="0" value="0,20" flags="73" ds="1,0" dd="0,0"/>
+         <Key time="1" value="1,10" flags="73" ds="0.0065901685,-0.042740289" dd="0.18910109,-1.2264079"/>
+         <Key time="2" value="2,5" flags="73" ds="0.0032210788,0" dd="3.0498759e-007,0"/>
+         <Key time="4" value="4,0" flags="73" ds="0.0065815253,-0.012556623" dd="0.17010812,-0.32454231"/>
+         <Key time="4.4666667" value="4.4666667,0.30000001" flags="73" ds="0.0032092433,0" dd="0.0033334098,0"/>
+         <Key time="5" value="5,0" flags="73" ds="0.5020833,0" dd="0.51111114,0"/>
+        </NewSubTrack>
+       </Track>
+      </Node>
+      <Node Id="3" Type="20" Name="ScreenFader" Flags="3" ParentNode="1" ParamIdVersion="6">
+       <Track ParamId="71" Type="-1" Flags="0" StartTime="0" EndTime="4" HasCustomColor="0" ValueType="-1">
+        <Key time="0" fadeTime="2" fadeColor="0,0,0" fadeType="0" fadeChangeType="0" texture="" useCurColor="1"/>
+       </Track>
+      </Node>
+      <Node Id="4" Type="4" Name="r_hdrbloomRatio" Flags="7" ParentNode="1" ParamIdVersion="6">
+       <Track ParamId="19" Type="4" Flags="0" defaultValue="0,0" HasCustomColor="0" ValueType="0">
+        <Key time="0" value="0,1.5" flags="73" ds="0.026666664,0" dd="0.026666664,0"/>
+        <Key time="0.079999991" value="0.079999991,1.5" flags="73" ds="0.079999991,0" dd="0.00022936786,0"/>
+        <Key time="3.0000002" value="3.0000002,0.15000001" flags="73" ds="0.0032568774,0" dd="0.0033333334,0"/>
+       </Track>
+      </Node>
+      <Node Id="8" Type="1" Name="Light33" Flags="1" ParamIdVersion="6" Pos="860.53802,326.70007,177.13899" Rotate="0.98296291,-0.079459317,0.1294096,-0.10355339" Scale="1,1,1" EntityGUID="4C7FF48360A1A5DA" BoneLinkTransformEnabled="0">
+       <Track ParamId="1" Type="4" HasCustomColor="0" ValueType="1">
+        <NewSubTrack Flags="0" defaultValue="0,860.95142" HasCustomColor="0">
+         <Key time="0.075000063" value="0.075000063,860.53802" flags="73" ds="1.1,0" dd="1.1,0"/>
+         <Key time="4" value="4,860.99335" flags="73" ds="1.3333334,0" dd="1.3333334,0"/>
+        </NewSubTrack>
+        <NewSubTrack Flags="0" defaultValue="0,327.61462" HasCustomColor="0">
+         <Key time="0.075000063" value="0.075000063,326.70007" flags="73" ds="1.1,0" dd="1.1,0"/>
+         <Key time="4" value="4,327.75711" flags="73" ds="1.3333334,0" dd="1.3333334,0"/>
+        </NewSubTrack>
+        <NewSubTrack Flags="0" defaultValue="0,177.91937" HasCustomColor="0">
+         <Key time="0.075000063" value="0.075000063,177.13899" flags="73" ds="1.1,0" dd="1.1,0"/>
+         <Key time="4" value="4,177.95174" flags="73" ds="1.3333334,0" dd="1.3333334,0"/>
+        </NewSubTrack>
+       </Track>
+       <Track ParamId="2" Type="4" HasCustomColor="0" ValueType="2">
+        <NewSubTrack Flags="0" defaultValue="0,-10.860879" HasCustomColor="0"/>
+        <NewSubTrack Flags="0" defaultValue="0,13.765763" HasCustomColor="0"/>
+        <NewSubTrack Flags="0" defaultValue="0,-13.342553" HasCustomColor="0"/>
+       </Track>
+       <Track ParamId="4" Type="-1" Flags="0" StartTime="0" EndTime="4" HasCustomColor="0" ValueType="-1"/>
+       <Track ParamIdIsName="true" ParamId="ScriptTable:Properties/Color/fDiffuseMultiplier" Type="4" Flags="0" defaultValue="0,0.80000001" HasCustomColor="0" ValueType="0"/>
+       <Track ParamIdIsName="true" ParamId="ScriptTable:Properties/Color/fHDRDynamic" Type="4" Flags="0" defaultValue="0,0" HasCustomColor="0" ValueType="0">
+        <Key time="0" value="0,0" flags="73" ds="0.063333333,0" dd="0.063333333,0"/>
+        <Key time="0.19" value="0.19,2" flags="73" ds="0.19,0" dd="0.15813066,0"/>
+        <Key time="4" value="4,0" flags="73" ds="0.47902992,0" dd="1.3333334,0"/>
+       </Track>
+       <Track ParamIdIsName="true" ParamId="ScriptTable:Properties/Color/clrDiffuse" Type="4" HasCustomColor="0" ValueType="20">
+        <NewSubTrack Flags="64" defaultValue="0,255" HasCustomColor="0">
+         <Key time="0" value="0,0" flags="73" ds="0.13541666,0" dd="0.13541666,0"/>
+         <Key time="0.29687494" value="0.29687494,150" flags="73" ds="0.078124993,0" dd="0.875,0"/>
+         <Key time="1.609375" value="1.609375,255" flags="73" ds="0.33333334,0" dd="0.33333334,0"/>
+        </NewSubTrack>
+        <NewSubTrack Flags="64" defaultValue="0,255" HasCustomColor="0">
+         <Key time="0" value="0,0" flags="73" ds="0.13541666,0" dd="0.13541666,0"/>
+         <Key time="0.29687494" value="0.29687494,150" flags="73" ds="0.078124993,0" dd="0.875,0"/>
+         <Key time="1.609375" value="1.609375,255" flags="73" ds="0.33333334,0" dd="0.33333334,0"/>
+        </NewSubTrack>
+        <NewSubTrack Flags="64" defaultValue="0,255" HasCustomColor="0">
+         <Key time="0" value="0,0" flags="73" ds="0.13541666,0" dd="0.13541666,0"/>
+         <Key time="0.29687494" value="0.29687494,150" flags="73" ds="0.078124993,0" dd="0.875,0"/>
+         <Key time="1.609375" value="1.609375,255" flags="73" ds="0.33333334,0" dd="0.33333334,0"/>
+        </NewSubTrack>
+       </Track>
+      </Node>
+     </Nodes>
+     <Events />
+    </Sequence>
+    <ZoomScrollSettings dopeSheetZoom="64.000008" dopeSheetHScroll="-30" nodesListVScroll="0" curveEditorZoom="60,47.727272" curveEditorScroll="0,-1.1"/>
+    <ID value="3"/>
+   </Object>
+  </LayerObjects>
+ </Layer>
+</ObjectLayer>

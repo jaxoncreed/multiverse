@@ -1,0 +1,8 @@
+<download name="fresh" type="Map">
+ <index src="filelist.xml" dest="filelist.xml"/>
+ <files>
+  <file src="fresh.dds" dest="fresh.dds" size="11064" md5="88e5cd0f6cec73a5b7721c6ccf05cb9a"/>
+  <file src="fresh.xml" dest="fresh.xml" size="105" md5="b5e8865b68d8a25ea941a81c5cb76990"/>
+  <file src="level.pak" dest="level.pak" size="3269465" md5="4f30ae24e172e51a78b2f10f22614bec"/>
+ </files>
+</download>
