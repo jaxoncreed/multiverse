@@ -1,0 +1,31 @@
+<Graph Description="" Group="" enabled="1" MultiPlayer="ClientServer">
+ <Nodes>
+  <Node Id="1" Class="Game:Start" pos="-410,-160,0" flags="0">
+   <Inputs InGame="1" InEditor="1"/>
+  </Node>
+  <Node Id="5" Class="Weapon:Listener" pos="-150,-180,0" flags="0">
+   <Inputs WeaponId="0" WeaponClass="TimeGun" Ammo="0"/>
+  </Node>
+  <Node Id="9" Class="Time:TimeOfDay" pos="-220,60,0" flags="0">
+   <Inputs Time="12" ForceUpdate="0" Speed="1"/>
+  </Node>
+  <Node Id="10" Class="Math:Add" pos="460,-170,0" flags="0">
+   <Inputs A="0" B="1"/>
+  </Node>
+  <Node Id="11" Class="Time:TimeOfDay" pos="170,-170,0" flags="0">
+   <Inputs Time="0" ForceUpdate="0" Speed="1"/>
+  </Node>
+  <Node Id="12" Class="Time:TimeOfDay" pos="600,-90,0" flags="1">
+   <Inputs Time="0" ForceUpdate="0" Speed="1"/>
+  </Node>
+ </Nodes>
+ <Edges>
+  <Edge nodeIn="5" nodeOut="1" portIn="Enable" portOut="output" enabled="1"/>
+  <Edge nodeIn="9" nodeOut="1" portIn="Set" portOut="output" enabled="1"/>
+  <Edge nodeIn="11" nodeOut="5" portIn="Get" portOut="OnShoot" enabled="1"/>
+  <Edge nodeIn="12" nodeOut="10" portIn="Set" portOut="out" enabled="1"/>
+  <Edge nodeIn="12" nodeOut="10" portIn="Time" portOut="out" enabled="1"/>
+  <Edge nodeIn="10" nodeOut="11" portIn="A" portOut="CurTime" enabled="1"/>
+ </Edges>
+ <GraphTokens />
+</Graph>

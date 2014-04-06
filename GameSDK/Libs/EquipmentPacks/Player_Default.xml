@@ -1,0 +1,18 @@
+<EquipPack name="Player_Default" primary="NoWeapon">
+ <Items>
+  <NoWeapon type="ItemGivable" setup=""/>
+  <TimeGun type="ItemGivable" setup="|PistolBulletAmmo|Flashlight|"/>
+ </Items>
+ <Ammos>
+  <Ammo name="RifleBullet" amount="160"/>
+  <Ammo name="PistolBullet" amount="27"/>
+  <Ammo name="MGbullet" amount="0"/>
+  <Ammo name="Tank125" amount="0"/>
+  <Ammo name="PistolBulletIncendiary" amount="18"/>
+  <Ammo name="ShotgunShell" amount="40"/>
+  <Ammo name="ShotgunShellSolid" amount="20"/>
+  <Ammo name="Rocket" amount="0"/>
+  <Ammo name="explosivegrenade" amount="0"/>
+  <Ammo name="smokegrenade" amount="0"/>
+ </Ammos>
+</EquipPack>
