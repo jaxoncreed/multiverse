@@ -2,12 +2,12 @@ FlowGraphTest =
 {
 	Properties =
 	{
-		soclasses_SmartObjectClass = "FlowGraphTest",
+
 	},
 }
 
 function FlowGraphTest:Event_GetNumber(sender)
-	MagicNumberResult = 42;--FlowGraphTest.GetMagicNumber("test"); -- Does not work yet
+	MagicNumberResult = CFlowGraphTest.GetMagicNumber();
 	self:ActivateOutput("MagicNumberResult", MagicNumberResult);
 end
 
