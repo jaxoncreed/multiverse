@@ -1,0 +1,12 @@
+*.exe
+*.dll
+*.exp
+*.lik
+*.lib
+*.pdb
+*.pyc
+*.lik
+*.log
+*.obj
+*.tlog
+*.bin
